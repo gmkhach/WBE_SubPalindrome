@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Write a method that takes a string and returns the largest subpalindrome within the string.
+ * Example: dana returns ana, ededfyayfl returns fyayf, etc.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,10 +37,8 @@ namespace SubPalindrome
         {
             string output = string.Empty;
             string reversedInput = string.Empty;
-            Stack<char> myStack = new Stack<char>();
-            int k;
-            int l;
             string test = string.Empty;
+            Stack<char> myStack = new Stack<char>();
 
             // reversing the input
             foreach (char ch in input)
@@ -46,16 +49,16 @@ namespace SubPalindrome
             {
                 reversedInput += myStack.Pop();
             }
-
+            
             // comparing the input and the reversedInput strings
             for (int i = 0; i < input.Length; i++)
             {
                 for (int j = 1; j <= input.Length - i; j++)
                 {
                     test = input.Substring(i, j);
+                    // checks if the current substring is a palindrome, and if so is it larger than the previously identifies sub palindromes
                     if (reversedInput.Contains(test) && test.Length > output.Length)
                     {
-
                         output = test;
                     }
                 }
